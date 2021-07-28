@@ -76,7 +76,9 @@ class FreeKassa
         $query['s'] = $this->getFormSignature(
             config('freekassa.project_id'),
             $amount,
-            config('freekassa.secret_key'), $order_id
+            config('freekassa.secret_key'),
+            config('freekassa.currency'),
+            $order_id
         );
 
         // Merge url ang query and return
@@ -114,12 +116,13 @@ class FreeKassa
      * @param $project_id
      * @param $amount
      * @param $secret
+     * @param $currency
      * @param $order_id
      * @return string
      */
-    public function getFormSignature($project_id, $amount, $secret, $order_id)
+    public function getFormSignature($project_id, $amount, $secret, $currency, $order_id)
     {
-        $hashStr = $project_id.':'.$amount.':'.$secret.':'.$order_id;
+        $hashStr = $project_id.':'.$amount.':'.$secret.':'.$currency.':'.$order_id;
 
         return md5($hashStr);
     }
@@ -128,12 +131,13 @@ class FreeKassa
      * @param $project_id
      * @param $amount
      * @param $secret
+     * @param $currency
      * @param $order_id
      * @return string
      */
-    public function getSignature($project_id, $amount, $secret, $order_id)
+    public function getSignature($project_id, $amount, $secret, $currency, $order_id)
     {
-        $hashStr = $project_id.':'.$amount.':'.$secret.':'.$order_id;
+        $hashStr = $project_id.':'.$amount.':'.$secret.':'.$currency.':'.$order_id;
 
         return md5($hashStr);
     }
