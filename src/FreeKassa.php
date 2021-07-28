@@ -70,7 +70,7 @@ class FreeKassa
 
         // Payment currency
         if (! is_null(config('freekassa.currency'))) {
-            $query['i'] = config('freekassa.currency');
+            $query['currency'] = config('freekassa.currency');
         }
 
         $query['s'] = $this->getFormSignature(
