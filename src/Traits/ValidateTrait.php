@@ -38,7 +38,6 @@ trait ValidateTrait
             config('freekassa.project_id'),
             $request->input('AMOUNT'),
             config('freekassa.secret_key_second'),
-            config('freekassa.currency'), 
             $request->input('MERCHANT_ORDER_ID'));
 
         if ($request->input('SIGN') != $sign) {
