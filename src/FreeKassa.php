@@ -114,6 +114,11 @@ class FreeKassa
             return true;
         }
 
+        // Allow local ips
+        if (str_starts_with($ip, '192')) {
+            return true;
+        }
+
         return in_array($ip, config('freekassa.allowed_ips'));
     }
 
