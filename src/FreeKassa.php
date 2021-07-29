@@ -109,6 +109,11 @@ class FreeKassa
             return true;
         }
 
+        // Allow docker ips
+        if (str_starts_with($ip, '172')) {
+            return true;
+        }
+
         return in_array($ip, config('freekassa.allowed_ips'));
     }
 
