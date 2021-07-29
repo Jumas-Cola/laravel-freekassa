@@ -135,9 +135,9 @@ class FreeKassa
      * @param $order_id
      * @return string
      */
-    public function getSignature($project_id, $amount, $secret, $currency, $order_id)
+    public function getSignature($project_id, $amount, $secret, $order_id)
     {
-        $hashStr = $project_id.':'.$amount.':'.$secret.':'.$currency.':'.$order_id;
+        $hashStr = $project_id.':'.$amount.':'.$secret.':'.$order_id;
 
         return md5($hashStr);
     }
